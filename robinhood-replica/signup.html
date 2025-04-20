@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Senbuy Signup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #059669;
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center px-6 bg-white text-gray-900 fade-in dark:bg-gray-900 dark:text-gray-100">
+
+  <main class="max-w-md w-full bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition-colors duration-500">
+    <h1 id="pageTitle" class="text-3xl font-bold mb-6 text-center">Create your Senbuy account</h1>
+    <select id="languageSelect" class="mb-6 w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+      <option value="en" selected>English</option>
+      <option value="id">Bahasa Indonesia</option>
+    </select>
+    <form id="signupForm" novalidate>
+      <div class="mb-4">
+        <label for="fullName" class="block font-semibold mb-2" id="labelFullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required placeholder="Your full name" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block font-semibold mb-2" id="labelEmail">Email address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="block font-semibold mb-2" id="labelPhone">Phone Number</label>
+        <div class="flex">
+          <select id="countryCode" name="countryCode" class="border rounded-l-md px-3 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+            <option value="+1">+1 (US)</option>
+            <option value="+44">+44 (UK)</option>
+            <option value="+49">+49 (DE)</option>
+            <option value="+33">+33 (FR)</option>
+            <option value="+86">+86 (CN)</option>
+            <option value="+62" selected>+62 (ID)</option>
+          </select>
+          <input type="tel" id="phone" name="phone" required placeholder="1234567890" class="w-full border rounded-r-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="identityNumber" class="block font-semibold mb-2" id="labelIdentity">Identity Number</label>
+        <input type="text" id="identityNumber" name="identityNumber" required placeholder="Your ID number" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+      </div>
+      <div class="mb-4">
+        <label for="gender" class="block font-semibold mb-2" id="labelGender">Gender</label>
+        <select id="gender" name="gender" required class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+          <option value="" disabled selected>Select your gender</option>
+          <option value="male" id="genderMale">Male</option>
+          <option value="female" id="genderFemale">Female</option>
+          <option value="other" id="genderOther">Other</option>
+          <option value="preferNot" id="genderPreferNot">Prefer not to say</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="address" class="block font-semibold mb-2" id="labelAddress">Address of Origin</label>
+        <textarea id="address" name="address" required placeholder="Your address" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"></textarea>
+      </div>
+      <div class="mb-4">
+        <label for="purpose" class="block font-semibold mb-2" id="labelPurpose">Purpose of Crypto Investment</label>
+        <select id="purpose" name="purpose" required class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+          <option value="" disabled selected id="purposeSelect">Select purpose</option>
+          <option value="investment" id="purposeInvestment">Investment</option>
+          <option value="trading" id="purposeTrading">Trading</option>
+          <option value="savings" id="purposeSavings">Savings</option>
+          <option value="other" id="purposeOther">Other</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="salaryRange" class="block font-semibold mb-2" id="labelSalary">Monthly Salary Range</label>
+        <select id="salaryRange" name="salaryRange" required class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+          <option value="" disabled selected id="salarySelect">Select salary range</option>
+          <option value="under1000" id="salaryUnder">Under €1,000</option>
+          <option value="1000-3000" id="salary1000">€1,000 - €3,000</option>
+          <option value="3000-5000" id="salary3000">€3,000 - €5,000</option>
+          <option value="over5000" id="salaryOver">Over €5,000</option>
+        </select>
+      </div>
+      <div class="mb-6 flex items-center">
+        <input type="checkbox" id="approval" name="approval" required class="mr-2" />
+        <label for="approval" class="font-semibold" id="labelApproval">I agree to the terms and conditions</label>
+      </div>
+      <button type="submit" class="btn-primary w-full py-3 rounded-full font-semibold text-lg flex justify-center items-center space-x-2 hover:bg-green-700 transition">
+        <i class="fas fa-user-plus"></i>
+        <span id="btnText">Sign Up</span>
+      </button>
+    </form>
+    <p class="mt-4 text-center text-gray-600 dark:text-gray-300" id="loginText">Already have an account? <a href="login.html" class="text-green-600 hover:underline" id="loginLink">Log in</a></p>
+  </main>
+
+  <footer class="border-t border-gray-200 py-6 text-center text-xs text-gray-500 max-w-7xl mx-auto px-6 dark:border-gray-700 dark:text-gray-400" id="footerText">
+    © 2025 Senbuy Markets, Inc. All rights reserved.
+  </footer>
+
+  <script>
+    const signupForm = document.getElementById('signupForm');
+
+    signupForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const fullName = signupForm.fullName.value.trim();
+      const email = signupForm.email.value.trim();
+      const countryCode = signupForm.countryCode.value;
+      const phone = signupForm.phone.value.trim();
+      const identityNumber = signupForm.identityNumber.value.trim();
+      const gender = signupForm.gender.value;
+      const address = signupForm.address.value.trim();
+      const purpose = signupForm.purpose.value;
+      const salaryRange = signupForm.salaryRange.value;
+      const approval = signupForm.approval.checked;
+
+      if (!fullName || !email || !phone || !identityNumber || !gender || !address || !purpose || !salaryRange || !approval) {
+        alert('Please fill in all fields and agree to the terms.');
+        return;
+      }
+
+      // Save user data to localStorage
+      const users = JSON.parse(localStorage.getItem('senbuyUsers') || '[]');
+      if (users.find(u => u.email === email)) {
+        alert('Email already registered. Please log in.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      users.push({ fullName, email, phone: countryCode + phone, identityNumber, gender, address, purpose, salaryRange });
+      localStorage.setItem('senbuyUsers', JSON.stringify(users));
+
+      alert('Registration successful! Redirecting to dashboard.');
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+
+</body>
+</html>
