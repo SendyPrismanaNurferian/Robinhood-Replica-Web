@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Senbuy Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+    }
+    .sidebar {
+      background-color: #10b981;
+      color: white;
+      min-height: 100vh;
+      position: fixed;
+      width: 16rem;
+      top: 0;
+      left: 0;
+      overflow-y: auto;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background-color: #059669;
+    }
+    .sidebar a i {
+      margin-right: 0.75rem;
+    }
+    main {
+      margin-left: 16rem;
+      padding: 2rem;
+    }
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+      main {
+        margin-left: 0;
+        padding: 1rem;
+      }
+    }
+    .promo-banner {
+      background-color: #d1fae5;
+      border: 2px solid #10b981;
+      border-radius: 0.5rem;
+      padding: 1rem 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-weight: 600;
+      color: #065f46;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .promo-banner:hover {
+      background-color: #a7f3d0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="p-6 text-2xl font-bold mb-8 flex items-center space-x-3">
+      <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="4" fill="none" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20 32l8 8 16-16" />
+      </svg>
+      <span>Senbuy</span>
+    </div>
+    <nav class="flex flex-col space-y-2">
+      <a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="portfolio.html"><i class="fas fa-coins"></i> Portfolio</a>
+      <a href="trade.html"><i class="fas fa-exchange-alt"></i> Trade</a>
+      <a href="wallet.html"><i class="fas fa-wallet"></i> Wallet</a>
+      <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+      <a href="profile.html"><i class="fas fa-user-circle"></i> Profile</a>
+      <a href="logout.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main>
+    <div class="promo-banner" onclick="alert('Get 5% cashback on all trades this week!')">
+      🎉 Limited Time Offer: Get 5% Cashback on All Trades! Click for details.
+    </div>
+
+    <header class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold">Dashboard</h1>
+      <div class="flex items-center space-x-4">
+        <button id="themeToggle" class="text-gray-700 hover:text-green-600 transition flex items-center space-x-2" aria-label="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+          <span>Dark Mode</span>
+        </button>
+        <div class="relative group">
+          <button id="notificationBtn" class="text-gray-700 hover:text-green-600 transition flex items-center space-x-2" aria-label="Notifications">
+            <i class="fas fa-bell"></i>
+            <span>Notifications</span>
+            <span class="absolute top-0 right-0 inline-block w-2 h-2 bg-red-600 rounded-full"></span>
+          </button>
+          <div id="notificationDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded shadow-lg z-10">
+            <ul class="p-4 text-sm text-gray-700 space-y-2">
+              <li>New trade executed successfully.</li>
+              <li>Price alert: Bitcoin up 5% today.</li>
+              <li>Wallet balance updated.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="relative group">
+          <button id="profileBtn" class="text-gray-700 hover:text-green-600 transition flex items-center space-x-2" aria-label="Profile">
+            <i class="fas fa-user-circle"></i>
+            <span>Profile</span>
+          </button>
+          <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg z-10">
+            <a href="profile.html" class="block px-4 py-2 hover:bg-gray-100">View Profile</a>
+            <a href="settings.html" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+            <a href="logout.html" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-xl font-semibold mb-4">Portfolio Value</h2>
+        <p class="text-3xl font-bold">€12,345.67</p>
+        <p class="text-green-600 mt-2">+5.67% today</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-xl font-semibold mb-4">Bitcoin (BTC)</h2>
+        <p class="text-2xl font-bold">€45,678.90</p>
+        <p class="text-green-600 mt-2">+3.45% today</p>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+        <h2 class="text-xl font-semibold mb-4">Ethereum (ETH)</h2>
+        <p class="text-2xl font-bold">€3,456.78</p>
+        <p class="text-red-600 mt-2">-1.23% today</p>
+      </div>
+    </section>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold mb-6">Recent Transactions</h2>
+      <table class="w-full text-left border border-gray-200 rounded-lg bg-white">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-4 py-3 border-b border-gray-200">Date</th>
+            <th class="px-4 py-3 border-b border-gray-200">Type</th>
+            <th class="px-4 py-3 border-b border-gray-200">Amount</th>
+            <th class="px-4 py-3 border-b border-gray-200">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-3">2025-04-18</td>
+            <td class="px-4 py-3">Buy BTC</td>
+            <td class="px-4 py-3">€500.00</td>
+            <td class="px-4 py-3 text-green-600 font-semibold">Completed</td>
+          </tr>
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-3">2025-04-17</td>
+            <td class="px-4 py-3">Sell ETH</td>
+            <td class="px-4 py-3">€200.00</td>
+            <td class="px-4 py-3 text-red-600 font-semibold">Pending</td>
+          </tr>
+          <tr class="border-t border-gray-200">
+            <td class="px-4 py-3">2025-04-16</td>
+            <td class="px-4 py-3">Stake SOL</td>
+            <td class="px-4 py-3">€100.00</td>
+            <td class="px-4 py-3 text-green-600 font-semibold">Completed</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    // Theme toggle logic
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    const darkModeKey = 'senbuy-dark-mode';
+
+    function setDarkMode(enabled) {
+      if (enabled) {
+        htmlElement.classList.add('dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i><span>Light Mode</span>';
+      } else {
+        htmlElement.classList.remove('dark');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i><span>Dark Mode</span>';
+      }
+      localStorage.setItem(darkModeKey, enabled);
+    }
+
+    // Initialize theme based on localStorage
+    const savedDarkMode = localStorage.getItem(darkModeKey) === 'true';
+    setDarkMode(savedDarkMode);
+
+    themeToggle.addEventListener('click', () => {
+      setDarkMode(!htmlElement.classList.contains('dark'));
+    });
+
+    // Notification dropdown toggle
+    const notificationBtn = document.getElementById('notificationBtn');
+    const notificationDropdown = document.getElementById('notificationDropdown');
+    notificationBtn.addEventListener('click', () => {
+      notificationDropdown.classList.toggle('hidden');
+    });
+
+    // Profile dropdown toggle
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+    profileBtn.addEventListener('click', () => {
+      profileDropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdowns when clicking outside
+    window.addEventListener('click', (e) => {
+      if (!notificationBtn.contains(e.target) && !notificationDropdown.contains(e.target)) {
+        notificationDropdown.classList.add('hidden');
+      }
+      if (!profileBtn.contains(e.target) && !profileDropdown.contains(e.target)) {
+        profileDropdown.classList.add('hidden');
+      }
+    });
+  </script>
+
+</body>
+</html>
