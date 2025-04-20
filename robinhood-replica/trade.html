@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Senbuy Trade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f9fafb;
+        color: #111827;
+      }
+      .sidebar {
+        background-color: #10b981;
+        color: white;
+        min-height: 100vh;
+      }
+      .sidebar a {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        font-weight: 600;
+        color: white;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      .sidebar a:hover, .sidebar a.active {
+        background-color: #059669;
+      }
+      .sidebar a i {
+        margin-right: 0.75rem;
+      }
+      .trade-section {
+        background: white;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 15px rgba(16, 185, 129, 0.3);
+        transition: box-shadow 0.3s ease;
+      }
+      .trade-section:hover {
+        box-shadow: 0 15px 25px rgba(16, 185, 129, 0.5);
+      }
+      .chart-container {
+        margin-top: 2rem;
+        background: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px rgba(16, 185, 129, 0.3);
+      }
+    </style>
+  </head>
+  <body class="flex min-h-screen">
+  
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 hidden md:block">
+      <div class="p-6 text-2xl font-bold mb-8 flex items-center space-x-3">
+        <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2">
+          <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="4" fill="none" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20 32l8 8 16-16" />
+        </svg>
+        <span>Senbuy</span>
+      </div>
+      <nav class="flex flex-col space-y-2">
+        <a href="dashboard.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="portfolio.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-coins"></i> Portfolio</a>
+        <a href="trade.html" class="flex items-center bg-green-700 px-4 py-3 rounded-md"><i class="fas fa-exchange-alt"></i> Trade</a>
+        <a href="wallet.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-wallet"></i> Wallet</a>
+        <a href="settings.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-cog"></i> Settings</a>
+        <a href="profile.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-user-circle"></i> Profile</a>
+        <a href="logout.html" class="flex items-center px-4 py-3 rounded-md hover:bg-green-700"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
+  
+    <!-- Main Content -->
+    <main class="flex-grow p-8">
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold">Trade</h1>
+      </header>
+  
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="trade-section">
+          <h2 class="text-xl font-semibold mb-4">Buy Crypto</h2>
+          <form>
+            <label for="buy-crypto" class="block mb-2 font-semibold">Select Cryptocurrency</label>
+            <select id="buy-crypto" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+              <option>Bitcoin (BTC)</option>
+              <option>Ethereum (ETH)</option>
+              <option>Solana (SOL)</option>
+              <option>Cardano (ADA)</option>
+            </select>
+            <label for="buy-amount" class="block mb-2 font-semibold">Amount (€)</label>
+            <input type="number" id="buy-amount" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter amount" />
+            <button type="submit" class="btn-primary w-full py-3 rounded-full font-semibold text-lg hover:bg-green-700 transition">Buy</button>
+          </form>
+        </div>
+        <div class="trade-section">
+          <h2 class="text-xl font-semibold mb-4">Sell Crypto</h2>
+          <form>
+            <label for="sell-crypto" class="block mb-2 font-semibold">Select Cryptocurrency</label>
+            <select id="sell-crypto" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500">
+              <option>Bitcoin (BTC)</option>
+              <option>Ethereum (ETH)</option>
+              <option>Solana (SOL)</option>
+              <option>Cardano (ADA)</option>
+            </select>
+            <label for="sell-amount" class="block mb-2 font-semibold">Amount (€)</label>
+            <input type="number" id="sell-amount" class="w-full border border-gray-300 rounded-md px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Enter amount" />
+            <button type="submit" class="btn-primary w-full py-3 rounded-full font-semibold text-lg hover:bg-green-700 transition">Sell</button>
+          </form>
+        </div>
+      </section>
+
+      <div class="chart-container">
+        <h2 class="text-xl font-semibold mb-4">Portfolio Crypto Value Over Time</h2>
+        <canvas id="portfolioChart" width="400" height="200"></canvas>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('portfolioChart').getContext('2d');
+      const portfolioChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+          datasets: [{
+            label: 'Portfolio Value (€)',
+            data: [12000, 12500, 13000, 12800, 13500, 14000, 14500],
+            borderColor: 'rgba(16, 185, 129, 1)',
+            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+            fill: true,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+  </html>
