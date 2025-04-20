@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Senbuy Crypto Web</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #111827;
+    }
+    a {
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #10b981;
+    }
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #059669;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- Header -->
+  <header class="flex justify-between items-center p-6 border-b border-gray-200 dark:border-gray-700">
+    <div class="flex items-center space-x-2">
+      <svg class="w-10 h-10 text-green-500 dark:text-green-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 64 64" stroke="currentColor" stroke-width="2">
+        <circle cx="32" cy="32" r="30" stroke="currentColor" stroke-width="4" fill="none" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20 32l8 8 16-16" />
+      </svg>
+      <span id="brandName" class="text-2xl font-bold text-green-600 dark:text-green-400">Senbuy</span>
+    </div>
+    <div class="flex items-center space-x-6">
+      <select id="languageSelect" class="border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100">
+        <option value="en" selected>English</option>
+        <option value="id">Bahasa Indonesia</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="zh">中文</option>
+      </select>
+      <a id="loginLink" href="login.html" class="text-gray-700 font-semibold hover:text-green-600 dark:text-gray-200 dark:hover:text-green-400 transition">Log in</a>
+      <a id="signupLink" href="signup.html" class="text-gray-700 font-semibold hover:text-green-600 dark:text-gray-200 dark:hover:text-green-400 transition">Sign up</a>
+      <button id="themeToggle" class="text-gray-700 hover:text-green-600 dark:text-gray-200 dark:hover:text-green-400 transition flex items-center space-x-2" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+        <span id="themeToggleText">Dark Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Hero Section -->
+  <main class="flex-grow max-w-7xl mx-auto px-6 py-12">
+    <section class="text-center max-w-4xl mx-auto">
+      <div class="mx-auto mb-8 max-w-xs">
+        <img src="https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Crypto trading" class="rounded-lg shadow-lg mx-auto" />
+      </div>
+      <h1 id="heroTitle" class="text-5xl font-extrabold mb-6 animate-fadeIn">Buy Bitcoin with zero fees</h1>
+      <p id="heroSubtitle" class="text-gray-700 dark:text-gray-300 mb-8 animate-fadeIn delay-150 text-lg">Invest in Bitcoin with no commissions and no added spreads from Senbuy Crypto. Sign up today and get €10 in crypto.</p>
+      <a id="continueBtn" href="signup.html" class="inline-block btn-primary px-10 py-4 rounded-full font-semibold text-lg transition hover:bg-green-700 flex items-center justify-center space-x-3 mx-auto max-w-max animate-fadeIn delay-300">
+        <span>Continue</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-200 py-6 text-center text-xs text-gray-500 max-w-7xl mx-auto px-6 dark:border-gray-700 dark:text-gray-400" id="footerText">
+    <p>© 2025 Senbuy Markets, Inc. All rights reserved.</p>
+  </footer>
+
+  <style>
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    .delay-150 {
+      animation-delay: 0.15s;
+    }
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+  </style>
+
+  <script>
+    // Language translations
+    const translations = {
+      en: {
+        brandName: "Senbuy",
+        login: "Log in",
+        signup: "Sign up",
+        heroTitle: "Buy Bitcoin with zero fees",
+        heroSubtitle: "Invest in Bitcoin with no commissions and no added spreads from Senbuy Crypto. Sign up today and get €10 in crypto.",
+        continue: "Continue",
+        footerText: "© 2025 Senbuy Markets, Inc. All rights reserved.",
+        darkMode: "Dark Mode",
+        lightMode: "Light Mode"
+      },
+      id: {
+        brandName: "Senbuy",
+        login: "Masuk",
+        signup: "Daftar",
+        heroTitle: "Beli Bitcoin tanpa biaya",
+        heroSubtitle: "Investasikan Bitcoin tanpa komisi dan tanpa spread tambahan dari Senbuy Crypto. Daftar hari ini dan dapatkan €10 dalam crypto.",
+        continue: "Lanjutkan",
+        footerText: "© 2025 Senbuy Markets, Inc. Semua hak dilindungi.",
+        darkMode: "Mode Gelap",
+        lightMode: "Mode Terang"
+      }
+    };
+
+    // Apply dark mode on load based on localStorage
+    const htmlElement = document.documentElement;
+    const darkModeKey = 'senbuy-dark-mode';
+    const savedDarkMode = localStorage.getItem(darkModeKey) === 'true';
+    if (savedDarkMode) {
+      htmlElement.classList.add('dark');
+    } else {
+      htmlElement.classList.remove('dark');
+    }
+
+    // Elements to translate
+    const brandNameEl = document.getElementById('brandName');
+    const loginLinkEl = document.getElementById('loginLink');
+    const signupLinkEl = document.getElementById('signupLink');
+    const heroTitleEl = document.getElementById('heroTitle');
+    const heroSubtitleEl = document.getElementById('heroSubtitle');
+    const continueBtnEl = document.getElementById('continueBtn').querySelector('span');
+    const footerTextEl = document.getElementById('footerText');
+    const themeToggleTextEl = document.getElementById('themeToggleText');
+
+    // Language selector
+    const languageSelect = document.getElementById('languageSelect');
+
+    function applyLanguage(lang) {
+      const t = translations[lang] || translations.en;
+      brandNameEl.textContent = t.brandName;
+      loginLinkEl.textContent = t.login;
+      signupLinkEl.textContent = t.signup;
+      heroTitleEl.textContent = t.heroTitle;
+      heroSubtitleEl.textContent = t.heroSubtitle;
+      continueBtnEl.textContent = t.continue;
+      footerTextEl.textContent = t.footerText;
+      themeToggleTextEl.textContent = savedDarkMode ? t.lightMode : t.darkMode;
+    }
+
+    // Initialize language from localStorage or default
+    const savedLang = localStorage.getItem('senbuy-lang') || 'en';
+    languageSelect.value = savedLang;
+    applyLanguage(savedLang);
+
+    languageSelect.addEventListener('change', (e) => {
+      const lang = e.target.value;
+      localStorage.setItem('senbuy-lang', lang);
+      applyLanguage(lang);
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      const isDark = htmlElement.classList.toggle('dark');
+      localStorage.setItem(darkModeKey, isDark);
+      themeToggleTextEl.textContent = isDark ? translations[languageSelect.value].lightMode : translations[languageSelect.value].darkMode;
+    });
+  </script>
+
+</body>
+</html>
