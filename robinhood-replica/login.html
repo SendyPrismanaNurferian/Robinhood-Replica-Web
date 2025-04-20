@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Senbuy Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #059669;
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-center items-center px-6 bg-white text-gray-900 fade-in dark:bg-gray-900 dark:text-gray-100">
+
+  <main class="max-w-md w-full bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md transition-colors duration-500">
+    <h1 id="pageTitle" class="text-3xl font-bold mb-6 text-center">Welcome back to Senbuy</h1>
+    <select id="languageSelect" class="mb-6 w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100">
+      <option value="en" selected>English</option>
+      <option value="id">Bahasa Indonesia</option>
+    </select>
+    <form id="loginForm" novalidate>
+      <div class="mb-4">
+        <label for="email" class="block font-semibold mb-2" id="labelEmail">Email address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+      </div>
+      <div class="mb-6">
+        <label for="password" class="block font-semibold mb-2" id="labelPassword">Password</label>
+        <input type="password" id="password" name="password" required placeholder="Your password" class="w-full border rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100" />
+      </div>
+      <button type="submit" class="btn-primary w-full py-3 rounded-full font-semibold text-lg flex justify-center items-center space-x-2 hover:bg-green-700 transition">
+        <i class="fas fa-sign-in-alt"></i>
+        <span id="btnText">Log In</span>
+      </button>
+    </form>
+    <p class="mt-4 text-center text-gray-600 dark:text-gray-300" id="signupText">Don't have an account? <a href="signup.html" class="text-green-600 hover:underline" id="signupLink">Sign up</a></p>
+  </main>
+
+  <footer class="border-t border-gray-200 py-6 text-center text-xs text-gray-500 max-w-7xl mx-auto px-6 dark:border-gray-700 dark:text-gray-400" id="footerText">
+    © 2025 Senbuy Markets, Inc. All rights reserved.
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        pageTitle: "Welcome back to Senbuy",
+        labelEmail: "Email address",
+        labelPassword: "Password",
+        btnText: "Log In",
+        signupText: "Don't have an account? ",
+        signupLink: "Sign up",
+        footerText: "© 2025 Senbuy Markets, Inc. All rights reserved."
+      },
+      id: {
+        pageTitle: "Selamat datang kembali di Senbuy",
+        labelEmail: "Alamat Email",
+        labelPassword: "Kata Sandi",
+        btnText: "Masuk",
+        signupText: "Belum punya akun? ",
+        signupLink: "Daftar",
+        footerText: "© 2025 Senbuy Markets, Inc. Semua hak dilindungi."
+      }
+    };
+
+    const languageSelect = document.getElementById('languageSelect');
+
+    function applyLanguage(lang) {
+      const t = translations[lang] || translations.en;
+      document.getElementById('pageTitle').textContent = t.pageTitle;
+      document.getElementById('labelEmail').textContent = t.labelEmail;
+      document.getElementById('labelPassword').textContent = t.labelPassword;
+      document.getElementById('btnText').textContent = t.btnText;
+      document.getElementById('signupText').textContent = t.signupText;
+      document.getElementById('signupLink').textContent = t.signupLink;
+      document.getElementById('footerText').textContent = t.footerText;
+    }
+
+    languageSelect.addEventListener('change', (e) => {
+      const lang = e.target.value;
+      localStorage.setItem('senbuy-lang', lang);
+      applyLanguage(lang);
+    });
+
+    // Initialize language on page load
+    const savedLang = localStorage.getItem('senbuy-lang') || 'en';
+    languageSelect.value = savedLang;
+    applyLanguage(savedLang);
+
+    // Apply dark mode on load based on localStorage
+    const htmlElement = document.documentElement;
+    const darkModeKey = 'senbuy-dark-mode';
+    const savedDarkMode = localStorage.getItem(darkModeKey) === 'true';
+    if (savedDarkMode) {
+      htmlElement.classList.add('dark');
+    } else {
+      htmlElement.classList.remove('dark');
+    }
+  </script>
+
+</body>
+</html>
